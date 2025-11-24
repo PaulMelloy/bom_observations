@@ -8,8 +8,18 @@ if(isFALSE(dir.exists(dl_dir))){
 
 # Check if the last download was within the last 24 hours
 prev_dloads <- list.files(dl_dir)
-last_date <- strsplit(sort(prev_dloads,decreasing = TRUE)[1], "_")[[1]][1]
-last_date <- as.Date(last_date, format = "%y%m%d")
+
+if (length(prev_dloads) == 0) {
+    # if dir is empty, set the date
+    last_date <- as.Date("1900-01-01") 
+    message("Data directory is empty. Setting last_date to a historical value to trigger download.")
+} else {
+    # normal procedures
+    last_date_str <- strsplit(sort(prev_dloads, decreasing = TRUE)[1], "_")[[1]][1]
+    last_date <- as.Date(last_date_str, format = "%y%m%d")
+}
+
+
 if(Sys.Date() - last_date <1) {
     message("Exiting as data was downloaded recently")
     quit(save = "no")
