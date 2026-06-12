@@ -1,6 +1,7 @@
 services:
   bom_obs:
     image: "bom_observations"
+    container_name: "bom_obs"
     volumes:
       - ./data:/app/data
       - ./logs:/app/logs
