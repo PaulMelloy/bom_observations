@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y cron
 #RUN chown -R bom_user /app
 
 # Add script to crontab to run at 14:00 UTC every day
-RUN echo "* 14 * * * /usr/local/bin/Rscript /app/dl_aus_weather.R >> /app/logs/`date +%Y-%m-%d`_cron.log 2>&1" > /app/crontab
+RUN echo '0 14 * * * /usr/local/bin/Rscript /app/dl_aus_weather.R >> /app/logs/$(date +\%Y-\%m-\%d)_cron.log 2>&1' > /app/crontab
 
 # enable crontab
 RUN crontab /app/crontab
