@@ -18,7 +18,7 @@ remotes::install_github("https://github.com/PaulMelloy/epiphytoolR",
 # Verify the packages the container actually needs at runtime are installed.
 # install.packages()/install_github() only warn on failure, so without this a
 # missing dependency would silently produce a broken image that builds "OK".
-required <- c("data.table", "openmeteo", "epiphytoolR")
+required <- c("data.table", "epiphytoolR")
 missing <- required[!vapply(required, requireNamespace, logical(1),
                             quietly = TRUE)]
 if (length(missing)) {

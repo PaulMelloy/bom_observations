@@ -2,13 +2,14 @@
 FROM rocker/geospatial:latest
 
 # Install necessary R packages listed in a requirements file - Be sure to edit this file as needed
+RUN mkdir -p /tmp
 COPY requirements.R /tmp/requirements.R
 RUN R -e "source('/tmp/requirements.R')"
 # clean up requirements file so PAT is not exposed on shiny image
 RUN rm /tmp/requirements.R
 
 # Set working directory
-WORKDIR /app
+#WORKDIR /app
 # Create data directory
 RUN mkdir -p /app/data
 RUN mkdir -p /app/logs
