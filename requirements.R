@@ -3,11 +3,6 @@ install.packages(c("devtools", "remotes", "data.table", "dplyr", "ggplot2","sf",
                    "here","units"),
                     repos = "https://cran.r-project.org", dependencies = TRUE)
 
-# epiphytoolR depends on 'openmeteo', which has been archived from CRAN and so
-# is not installable via the normal dependency resolution. Install the archived
-# version explicitly first.
-remotes::install_version("openmeteo", repos = "https://cran.r-project.org")
-
 # Add your required github public packages here, for example:
 remotes::install_github("https://github.com/PaulMelloy/epiphytoolR",
                         ref = "dev", dependencies = TRUE)
